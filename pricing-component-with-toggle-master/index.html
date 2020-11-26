@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  
+  <title>Frontend Mentor | [Challenge Name Here]</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    html{
+      box-sizing:border-box;
+    }
+
+    *,*:before,*:after{
+      box-sizing:inherit;
+    }
+
+    body{
+      width:100%;
+      margin:0;
+      padding:0;
+      font-family: "Montserrat", sans-serif;
+      font-size: 15px;
+      background-color:hsl(240, 78%, 98%);
+    }
+
+    .main-container{
+      height:100vh;
+      width:100vw;
+      background-image:url("images/bg-top.svg");
+      background-repeat:repeat-x;
+      background-size:contain;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-flow: column nowrap;
+    }
+    h2{
+      color:hsl(233, 13%, 49%);
+    }
+    .upper-container{
+      padding:20px;
+      margin:20px;
+      text-align: center;
+    }
+
+    .slider-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap:10px;
+
+    }
+    .slider-content p{
+      color:hsl(234, 14%, 74%);
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width:60px;
+      height: 34px;
+    }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+      
+    }
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    .slider.round:hover{
+      opacity: 0.5;
+    }
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    .lower-container{
+      position:relative;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-container{
+      background-color:hsl(0, 0%, 100%);
+      width:250px;
+      height:290px;
+      position:absolute;
+      left:-100%;
+      top:10%;
+      color:hsl(233, 13%, 49%);
+      text-align:center;
+      border-radius: 10px;
+
+    }
+    .first,.second{
+      color:hsl(232, 13%, 33%);
+      font-size:30px;
+    }
+    .second{
+      display:none
+    }
+    .class{
+      font-size:12px;
+      font-weight:light;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+    
+    .class p{
+      border-bottom: 1px solid hsla(234, 14%, 74%, 0.5);
+
+    }
+  
+    .word{
+      font-size:15px;
+      font-weight:bold;
+      margin-top:10px;
+    }
+
+  
+    .middle-container{
+      background-color:#2196f3;
+      width:250px;
+      height:330px;
+      color:hsl(0, 0%, 100%);
+      text-align:center;
+      border-radius: 10px;
+    }
+
+    span{
+      font-size:45px;
+      border-bottom: 1px solid hsla(234, 14%, 74%, 0.5);
+    }
+
+    .right-container{
+      background-color:white;
+      width:250px;
+      height:290px;
+      position:absolute;
+      right:-100%;
+      top:10%;
+      text-align:center;
+      color:hsl(232, 13%, 33%);
+      border-radius: 10px;
+    }
+
+    .btn{
+      width:170px;
+      height:30px;
+      padding-right:20px;
+      margin-top:20px;
+      background-color:rgb(35, 129, 206);
+      color:white;
+      border:1px solid rgb(35, 129, 206);
+      border-radius:5px;
+      text-transform:uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .btns{
+      width:170px;
+      height:30px;
+      border-radius:5px;
+      text-transform:uppercase;
+      margin-top:30px;
+      margin-right:50px;
+      margin-left:37px;
+      padding-right:25px;
+      background-color:white;
+      border:1px solid white;
+      color:rgb(35, 129, 206);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: transparent;
+      border: 1px solid hsl(237, 63%, 64%);
+      color: hsl(237, 63%, 64%);
+    }
+
+    .btns:hover {
+      background: transparent;
+      border: 1px solid hsl(237, 63%, 64%);
+      color: white;
+    }
+    
+
+
+  </style>
+</head>
+<body>
+  <div class="main-container">
+
+    <div class="upper-container">
+      <h2>Our Pricing</h2>
+      <div class="slider-content">
+        <p>Annually</p>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <span class="slider round" onclick="slideChange()"></span>
+        </label>
+        <p>Monthly</p>
+      </div> 
+    </div>
+
+    <div class="lower-container">
+       
+      <div class="left-container">
+        <p class="word">Basic</p>
+        <p class="first"><span>&dollar;</span><span>19.99</span></p>
+        <p class="second"><span>&dollar;</span><span>199.99</span></p>
+        <div class="class">
+          <p>500 GB Storage</p>
+          <p>2 Users Allowed</p>
+          <p>Send up to 3 GB</p>
+        </div>
+        
+        <button type="button" class="btn">Learn More</button>
+      </div>
+  
+      <div class="middle-container">
+        <p class="word">Professional</p>
+        <p class="first"><span>&dollar;</span><span>24.99</span></p>
+        <p class="second"><span>&dollar;</span><span>249.99</span></p>
+        <div class="class">
+          <p>1 TB Storage</p>
+          <p>5 Users Allowed</p>
+          <p>Send up to 10 GB</p>
+
+        </div>
+        <button type="button" class="btns">Learn More</button>
+  
+      </div>
+  
+      <div class="right-container">
+        <p class="word">Master</p>
+        <p class="first"><span>&dollar;</span><span>39.99</span></p>
+        <p class="second"><span>&dollar;</span><span>399.99</span></p>
+        <div class="class">
+          <p>2 TB Storage</p>
+          <p>10 Users Allowed</p>
+          <p>Send up to 20 GB</p>
+
+        </div>
+        <button type="button" class="btn">Learn More</button>
+  
+      </div>
+    </div>
+
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
